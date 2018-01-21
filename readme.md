@@ -5,7 +5,7 @@
 
 > A small library for express micro services written in typescript
 
-Helpful classes and functions for create a express micros service.
+Helpful classes and functions for create a express micro service.
 
 
 ## Requirements
@@ -40,7 +40,6 @@ $ npm install -S blueskyfish-express-commons
 The MIT License
 Copyright 2018 BlueSkyFish
 ```
-
 
 [nodejs]: https://nodejs.org/en/
 [typescript]: https://www.typescriptlang.org/
