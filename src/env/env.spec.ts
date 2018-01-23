@@ -10,6 +10,9 @@ import * as assert from 'assert';
 import 'mocha';
 import { Env } from './env';
 
+/**
+ * Small test for reading environment variables.
+ */
 describe('Env', () => {
 
 	it('Should returns null when name is null', () => {
