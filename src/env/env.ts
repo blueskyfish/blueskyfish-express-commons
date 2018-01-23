@@ -7,7 +7,16 @@
 
 export class Env {
 
+	/**
+	 * Returns the value of the environment. There is no distinction between upper and lower case
+	 *
+	 * @param {string} name the environment name
+	 * @return {string|null} the value or null
+	 */
 	static fromEnv(name: string): string {
+		if (!name) {
+			return null;
+		}
 		const loName = name.toLowerCase();
 		const upName = name.toUpperCase();
 		return process.env[name] ||
