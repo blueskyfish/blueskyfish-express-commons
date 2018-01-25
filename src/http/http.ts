@@ -8,7 +8,7 @@
 import { Request, Response } from 'express';
 
 import { BaseError } from '../error/base.error';
-import { HTTP_BAD_REQUEST } from './http.defines';
+import { HTTP_BAD_REQUEST, HTTP_OK } from './http.defines';
 
 import { HttpStatus } from './http.models';
 
@@ -25,6 +25,18 @@ export class Http {
 			status: HttpStatus.Okay,
 			data: data
 		});
+	}
+
+	/**
+	 * Send a media data directly. e.g SVG, PNG, PDF
+	 *
+	 * @param {Response} res
+	 * @param {string} mimeType
+	 * @param {string | Buffer} data
+	 */
+	static sendMedia(res: Response, mimeType: string, data: string|Buffer): void {
+		res.setHeader('content-type', mimeType);
+		res.status(HTTP_OK).send(data);
 	}
 
 	static sendError(res: Response, error: BaseError): void {

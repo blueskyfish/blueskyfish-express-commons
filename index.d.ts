@@ -70,6 +70,11 @@ declare namespace e {
 
 	class Http {
 		static sendData(res: Response, data: any): void;
+
+		/**
+		 * Send a media data directly. e.g SVG, PNG, PDF
+		 */
+		static sendMedia(res: Response, mimeType: string, data: string|Buffer): void
 		static sendError(res: Response, error: BaseError): void;
 		static fromHeader(req: Request, headName: string): string;
 		static fromPathParam(req: Request, param: string, defValue?: string): string;
