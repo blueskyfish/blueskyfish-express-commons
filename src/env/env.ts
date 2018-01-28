@@ -41,7 +41,6 @@ export class Env {
 	static addShutdown(shutdownFunc: ShutdownFunc): void {
 		process.on('SIGTERM', () => shutdownFunc('SIGTERM'));
 		process.on('SIGINT', () => shutdownFunc('SIGINT'));
-		process.on('SIGKILL', () => shutdownFunc('SIGKILL'));
 	}
 
 	static exit(code?: number): void {
