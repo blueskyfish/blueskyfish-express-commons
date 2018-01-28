@@ -5,6 +5,8 @@
  * Copyright 2018 BlueSkyFish
  */
 
+export type ShutdownFunc = (signal: string) => void;
+
 export class Env {
 
 	/**
@@ -31,9 +33,15 @@ export class Env {
 		return isNaN(temp) ? null : temp;
 	}
 
-	static addShutdown(cb: Function): void {
-		process.on('SIGTERM', () => cb());
-		process.on('SIGINT', () => cb());
+	/**
+	 * Add the shutdown function for listening the signals `SIGTERM` or `SIGINT` or `SIGKILL`.
+	 *
+	 * @param {ShutdownFunc} shutdownFunc
+	 */
+	static addShutdown(shutdownFunc: ShutdownFunc): void {
+		process.on('SIGTERM', () => shutdownFunc('SIGTERM'));
+		process.on('SIGINT', () => shutdownFunc('SIGINT'));
+		process.on('SIGKILL', () => shutdownFunc('SIGKILL'));
 	}
 
 	static exit(code?: number): void {

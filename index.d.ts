@@ -6,6 +6,7 @@
  */
 
 import { Request, Response } from 'express';
+import { ShutdownFunc } from './src/env/env';
 
 declare namespace e {
 
@@ -39,10 +40,12 @@ declare namespace e {
 		static error(tag: string, message: string, ...args: any[]): void;
 	}
 
+	type ShutdownFunc = (signal: string) => void;
+
 	class Env {
 		static fromEnv(name: string): string;
 		static fromEnvNumber(name: string): number;
-		static addShutdown(cb: Function): void;
+		static addShutdown(shutdownFunc: ShutdownFunc): void;
 		static exit(code?: number): void;
 	}
 

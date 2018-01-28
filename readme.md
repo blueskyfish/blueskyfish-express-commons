@@ -31,6 +31,7 @@ $ npm install -S blueskyfish-express-commons
 
 | Version    | Date       | Description
 |------------|:----------:|--------------------------------------------
+| `0.0.4`    | 2018-01-28 | add the exit signal `SIGKILL` for shutdown.
 | `0.0.3`    | 2018-01-25 | send media data with http.
 | `0.0.2`    | 2018-01-23 | reading environment.
 | `0.0.1`    | 2018-01-21 | Initial the library. It is extract from my other internal projects.
