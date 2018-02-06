@@ -6,7 +6,6 @@
  */
 
 import { Request, Response } from 'express';
-import { ShutdownFunc } from './src/env/env';
 
 declare namespace e {
 
@@ -83,6 +82,17 @@ declare namespace e {
 		static fromPathParam(req: Request, param: string, defValue?: string): string;
 		static fromQueryParam(req: Request, param: string, defValue?: string): string;
 		static getBody<T>(req: Request): T;
+	}
+
+	const FILE_TAG: string;
+
+	class Files {
+		static readFile(filename: string, encoding?: string): Promise<string|Buffer>;
+		static readJson<T>(filename): Promise<T>;
+		static writeFile(filename: string, data: string | Buffer, encoding?: string): Promise<void>
+		static writeJson(filename: string, value: any, prettyPrint?: boolean): Promise<void>;
+		static exists(filename: string): Promise<boolean>;
+		static deleteFile(filename): Promise<void>;
 	}
 }
 

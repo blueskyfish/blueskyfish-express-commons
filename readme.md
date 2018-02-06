@@ -31,6 +31,7 @@ $ npm install -S blueskyfish-express-commons
 
 | Version    | Date       | Description
 |------------|:----------:|--------------------------------------------
+| `0.0.6`    | 2018-02-06 | add file operation with promise.
 | `0.0.5`    | 2018-01-28 | add the signal name of the shutdown function.
 | `0.0.3`    | 2018-01-25 | send media data with http.
 | `0.0.2`    | 2018-01-23 | reading environment.
