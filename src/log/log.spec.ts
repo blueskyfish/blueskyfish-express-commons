@@ -91,4 +91,16 @@ describe('Class Log', () => {
 		Log.warn(TEST_TAG, 'This is a warn message (%s)', ++index);
 		Log.error(TEST_TAG, 'This is a error message (%s)', ++index);
 	});
+
+	it('Should print "info" log Messages and above', () => {
+		const TEST_TAG = 'test';
+		let index: number = 0;
+		Log.init(LogLevel.Info);
+		Log.trace(TEST_TAG, 'This is a trace message (%s)', ++index);
+		Log.debug(TEST_TAG, 'This is a debug message (%s)', ++index);
+		Log.config(TEST_TAG, 'This is a config message (%s)', ++index);
+		Log.info(TEST_TAG, 'This is a info message (%s)', ++index);
+		Log.warn(TEST_TAG, 'This is a warn message (%s)', ++index);
+		Log.error(TEST_TAG, 'This is a error message (%s)', ++index);
+	});
 });

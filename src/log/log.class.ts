@@ -8,6 +8,7 @@
 import * as util from 'util';
 
 import * as moment from 'moment';
+import { compareLevel } from './log.compare';
 
 import { LOG_TIME_FORMAT } from './log.defines';
 import { LogLevel } from './log.models';
@@ -28,7 +29,7 @@ export class Log {
 	}
 
 	static isLevel(logLevel: LogLevel): boolean {
-		return logLevel >= Log._logLevel;
+		return compareLevel(logLevel, Log._logLevel) >= 0;
 	}
 
 	static trace(tag: string, message: string, ...args: any[]): void {

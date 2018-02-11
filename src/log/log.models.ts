@@ -6,10 +6,10 @@
  */
 
 export enum LogLevel {
-	Trace  = 0,
-	Debug  = 1,
-	Config = 2,
-	Info   = 3,
-	Warn   = 4,
-	Error  = 5
+	Trace,
+	Debug,
+	Config,
+	Info,
+	Warn,
+	Error
 }

@@ -70,11 +70,11 @@ export class Http {
 	/**
 	 * Returns the path parameter value or the default value.
 	 * @param {Request} req
-	 * @param {string} param
+	 * @param {string|number} param
 	 * @param {string} defValue
 	 * @returns {string}
 	 */
-	static fromPathParam(req: Request, param: string, defValue: string = null): string {
+	static fromPathParam(req: Request, param: string|number, defValue: string = null): string {
 		return req.params[param] as string || defValue;
 	}
 

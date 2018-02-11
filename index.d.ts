@@ -6,6 +6,7 @@
  */
 
 import { Request, Response } from 'express';
+import { LogLevel } from './src/log/log.models';
 
 declare namespace e {
 
@@ -26,6 +27,8 @@ declare namespace e {
 	}
 
 	const LOG_TIME_FORMAT: string;
+
+	function compareLevel(level1: LogLevel, level2: LogLevel): number;
 
 	class Log {
 		static readonly logLevel: LogLevel;
@@ -79,7 +82,7 @@ declare namespace e {
 		static sendMedia(res: Response, mimeType: string, data: string|Buffer): void
 		static sendError(res: Response, error: BaseError): void;
 		static fromHeader(req: Request, headName: string): string;
-		static fromPathParam(req: Request, param: string, defValue?: string): string;
+		static fromPathParam(req: Request, param: string|number, defValue?: string): string;
 		static fromQueryParam(req: Request, param: string, defValue?: string): string;
 		static getBody<T>(req: Request): T;
 	}
