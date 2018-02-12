@@ -46,8 +46,8 @@ export class Http {
 			.send({
 				status: HttpStatus.Error,
 				data: {
-					group: error.group,
-					code: error.group,
+					group: error.group || error.code,
+					code: error.code,
 					message: error.message
 				}
 			});
