@@ -5,7 +5,9 @@
  * Copyright 2018 BlueSkyFish
  */
 
-export class BaseError extends Error {
+import { IBaseError } from './base.models';
+
+export class BaseError extends Error implements IBaseError {
 
 	constructor(private _group: string, private _code: string, message: string, private _status: number = 0) {
 		super(message);

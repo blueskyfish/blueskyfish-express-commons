@@ -31,6 +31,7 @@ $ npm install -S blueskyfish-express-commons
 
 | Version    | Date       | Description
 |------------|:----------:|--------------------------------------------
+| `0.0.9`    | 2018-02-13 | interface from base error.
 | `0.0.8`    | 2018-02-11 | send error code and error group
 | `0.0.7`    | 2018-02-11 | request params with string and number (`reg.params[0]` or `req.params['name']`<br>Log Level comparing
 | `0.0.6`    | 2018-02-06 | add file operation with promise.

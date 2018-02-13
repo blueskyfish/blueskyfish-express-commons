@@ -6,11 +6,17 @@
  */
 
 import { Request, Response } from 'express';
-import { LogLevel } from './src/log/log.models';
 
 declare namespace e {
 
-	class BaseError extends Error {
+	interface IBaseError {
+		readonly group: string;
+		readonly code: string;
+		readonly message: string;
+		readonly status: number;
+	}
+
+	class BaseError extends Error implements IBaseError {
 		constructor(group: string, code: string, message: string, status?: number);
 		readonly group: string;
 		readonly code: string;
@@ -80,7 +86,7 @@ declare namespace e {
 		 * Send a media data directly. e.g SVG, PNG, PDF
 		 */
 		static sendMedia(res: Response, mimeType: string, data: string|Buffer): void
-		static sendError(res: Response, error: BaseError): void;
+		static sendError(res: Response, error: IBaseError): void;
 		static fromHeader(req: Request, headName: string): string;
 		static fromPathParam(req: Request, param: string|number, defValue?: string): string;
 		static fromQueryParam(req: Request, param: string, defValue?: string): string;

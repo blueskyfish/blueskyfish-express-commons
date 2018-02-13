@@ -7,7 +7,7 @@
 
 import { Request, Response } from 'express';
 
-import { BaseError } from '../error/base.error';
+import { IBaseError } from '../error/base.models';
 import { HTTP_BAD_REQUEST, HTTP_OK } from './http.defines';
 
 import { HttpStatus } from './http.models';
@@ -39,7 +39,7 @@ export class Http {
 		res.status(HTTP_OK).send(data);
 	}
 
-	static sendError(res: Response, error: BaseError): void {
+	static sendError(res: Response, error: IBaseError): void {
 		const status: number = error.status ? error.status : HTTP_BAD_REQUEST;
 		res
 			.status(status)
