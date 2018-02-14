@@ -24,7 +24,7 @@ export class Http {
 		res.send({
 			status: HttpStatus.Okay,
 			data: data
-		});
+		}).end();
 	}
 
 	/**
@@ -36,27 +36,34 @@ export class Http {
 	 */
 	static sendMedia(res: Response, mimeType: string, data: string|Buffer): void {
 		res.setHeader('content-type', mimeType);
-		res.status(HTTP_OK).send(data);
+		res.status(HTTP_OK).send(data).end();
 	}
 
+	/**
+	 * Send an error message to the client. If the error status is greater zero then it use the status, otherwise
+	 * it sends Bad Request.
+	 *
+	 * @param {Response} res response
+	 * @param {IBaseError} error the error message
+	 */
 	static sendError(res: Response, error: IBaseError): void {
-		const status: number = error.status ? error.status : HTTP_BAD_REQUEST;
-		res
-			.status(status)
-			.send({
-				status: HttpStatus.Error,
-				data: {
-					group: error.group || error.code,
-					code: error.code,
-					message: error.message
-				}
-			});
+		const status: number = error.status && error.status > 0 ? error.status : HTTP_BAD_REQUEST;
+		const data = {
+			status: HttpStatus.Error,
+			data: {
+				group: error.group ? error.group : error.code,
+				code: error.code,
+				message: error.message
+			}
+		};
+		res.status(status).send(data).end();
 	}
 	/**
-	 * Find the header value from the given name.
-	 * @param {e.Request} req
-	 * @param {string} headName
-	 * @returns {string}
+	 * Find the value from the given header name.
+	 *
+	 * @param {e.Request} req the request
+	 * @param {string} headName the header name.
+	 * @returns {string} If the header is founded, then it returns the value, otherwise it returns null.
 	 */
 	static fromHeader(req: Request, headName: string): string {
 		const tempName = headName.toLocaleLowerCase();
