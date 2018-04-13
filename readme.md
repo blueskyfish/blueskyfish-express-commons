@@ -46,6 +46,7 @@ All libraries from **blueskyfish-express-*** and depended applications should us
 
 | Version    | Date       | Description
 |------------|:----------:|--------------------------------------------
+| `0.0.12`   | 2018-02-22 | adjust the version of the depended node modules.
 | `0.0.11`   | 2018-02-22 | adjust the version of the depended node modules.
 | `0.0.10`   | 2018-02-14 | Add response.end call and improve the error sending.
 | `0.0.9`    | 2018-02-13 | interface from base error.
