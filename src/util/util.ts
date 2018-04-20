@@ -54,12 +54,13 @@ export class Util {
 	}
 
 	/**
-	 * Convert a string into a number
-	 * @param {string|*} value
-	 * @param {number} def
-	 * @return {number}
+	 * Convert a string into a number. If the parameter is already a number, then it returns this number.
+	 *
+	 * @param {*} value the value
+	 * @param {number} def the default value if the parameter is not convertable.
+	 * @return {number} the number value.
 	 */
-	static toNumber(value: string|any, def: number): number {
+	static toNumber(value: any, def: number): number {
 		if (typeof value === 'number') {
 			return value;
 		}
@@ -73,6 +74,13 @@ export class Util {
 		return no;
 	}
 
+	/**
+	 * Generates an sha256 hash from the given secrets (salt) and a password.
+	 *
+	 * @param {string} secrets the secrets or salt
+	 * @param {string} password the password
+	 * @return {string} the hash from the sha256 function
+	 */
 	static sha(secrets: string, password: string): string {
 		const text: string = `${secrets}:${password}`;
 		return crypto.createHash(ALGORITHM).update(text).digest(OUTPUT);

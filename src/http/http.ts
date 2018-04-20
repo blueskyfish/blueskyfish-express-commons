@@ -8,31 +8,46 @@
 import { Request, Response } from 'express';
 
 import { IBaseError } from '../error/base.models';
-import { HTTP_BAD_REQUEST, HTTP_OK } from './http.defines';
-
-import { HttpStatus } from './http.models';
+import {
+	HTTP_BAD_REQUEST,
+	HTTP_OK,
+	HTTP_STATUS_ERROR,
+	HTTP_STATUS_OKAY
+} from './http.defines';
 
 export class Http {
 
 	/**
-	 * Send the data to the client.
+	 * Send the data to the client. The sending has the mime type `application/json` and the status code `200`.
 	 *
-	 * @param {Response} res
-	 * @param data
+	 * @param {Response} res the express response
+	 * @param {*} data the data
 	 */
 	static sendData(res: Response, data: any): void {
 		res.send({
-			status: HttpStatus.Okay,
+			status: HTTP_STATUS_OKAY,
 			data: data
 		}).end();
 	}
 
 	/**
+	 * Render a view with the given data entity. The result is sending to the client as `text/html`
+	 * with the status code `200`.
+	 *
+	 * @param {e.Response} res the express response
+	 * @param {string} template the filename to the template
+	 * @param {object} data the value for the template.
+	 */
+	static renderView(res: Response, template: string, data: any): void {
+		res.render(template, data);
+	}
+
+	/**
 	 * Send a media data directly. e.g SVG, PNG, PDF
 	 *
-	 * @param {Response} res
-	 * @param {string} mimeType
-	 * @param {string | Buffer} data
+	 * @param {Response} res the express response
+	 * @param {string} mimeType the mime type of the data
+	 * @param {string | Buffer} data the data
 	 */
 	static sendMedia(res: Response, mimeType: string, data: string|Buffer): void {
 		res.setHeader('content-type', mimeType);
@@ -43,13 +58,13 @@ export class Http {
 	 * Send an error message to the client. If the error status is greater zero then it use the status, otherwise
 	 * it sends Bad Request.
 	 *
-	 * @param {Response} res response
+	 * @param {Response} res the express response
 	 * @param {IBaseError} error the error message
 	 */
 	static sendError(res: Response, error: IBaseError): void {
 		const status: number = error.status && error.status > 0 ? error.status : HTTP_BAD_REQUEST;
 		const data = {
-			status: HttpStatus.Error,
+			status: HTTP_STATUS_ERROR,
 			data: {
 				group: error.group ? error.group : error.code,
 				code: error.code,
@@ -58,6 +73,7 @@ export class Http {
 		};
 		res.status(status).send(data).end();
 	}
+
 	/**
 	 * Find the value from the given header name.
 	 *
@@ -76,7 +92,7 @@ export class Http {
 
 	/**
 	 * Returns the path parameter value or the default value.
-	 * @param {Request} req
+	 * @param {Request} req the express request
 	 * @param {string|number} param
 	 * @param {string} defValue
 	 * @returns {string}
@@ -87,7 +103,7 @@ export class Http {
 
 	/**
 	 * Returns the query parameter value of the default value.
-	 * @param {Request} req
+	 * @param {Request} req the express request
 	 * @param {string} param
 	 * @param {string} defValue
 	 * @returns {string}

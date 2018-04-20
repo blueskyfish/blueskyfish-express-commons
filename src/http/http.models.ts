@@ -5,7 +5,7 @@
  * Copyright 2018 BlueSkyFish
  */
 
-export enum HttpStatus {
-	Okay = 'okay',
-	Error = 'error'
-}
+/**
+ * Defines the status value at sending JSON elements.
+ */
+export type HttpStatus = 'okay' | 'error';

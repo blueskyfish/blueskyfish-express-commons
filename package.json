@@ -1,6 +1,6 @@
 {
   "name": "blueskyfish-express-commons",
-  "version": "0.0.12",
+  "version": "0.1.0",
   "description": "A small library for express micro services written in typescript",
   "author": {
     "name": "BlueSkyFish",

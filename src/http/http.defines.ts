@@ -5,6 +5,22 @@
  * Copyright 2018 BlueSkyFish
  */
 
+import { HttpStatus } from './http.models';
+
+/**
+ * The sending JSON has the status `okay`.
+ *
+ * @type {HttpStatus}
+ */
+export const HTTP_STATUS_OKAY: HttpStatus   = 'okay';
+
+/**
+ * The sending JSON has the status `error`.
+ *
+ * @type {HttpStatus}
+ */
+export const HTTP_STATUS_ERROR: HttpStatus  = 'error';
+
 /**
  * The http status "Okay"
  */
