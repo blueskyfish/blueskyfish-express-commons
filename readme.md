@@ -7,6 +7,8 @@
 
 Helpful classes and functions for create a express micro service.
 
+**Breaking Change** switch to [yarn][yarn].
+
 
 ## Requirements
 
@@ -46,6 +48,7 @@ All libraries from **blueskyfish-express-*** and depended applications should us
 
 | Version    | Date       | Description
 |------------|:----------:|--------------------------------------------
+| `0.2.0`    | 2018-05-01 | switch to yarn.
 | `0.1.0`    | 2018-04-20 | add renderView method for Http and improve the js doc.<br>rework the HttpStatus enum to a type of `okay` and `error`.
 | `0.0.12`   | 2018-04-13 | adjust the version of the depended node modules.
 | `0.0.11`   | 2018-02-22 | adjust the version of the depended node modules.
@@ -86,3 +89,4 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 [nodejs]: https://nodejs.org/en/
 [typescript]: https://www.typescriptlang.org/
 [express]: https://expressjs.com/
+[yarn]: https://yarnpkg.com/

@@ -1,6 +1,6 @@
 {
   "name": "blueskyfish-express-commons",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A small library for express micro services written in typescript",
   "author": {
     "name": "BlueSkyFish",
@@ -24,7 +24,7 @@
   "scripts": {
     "build": "./node_modules/.bin/tsc --sourceMap true",
     "test": "./node_modules/.bin/mocha -r ts-node/register $(find src -name '*.spec.ts')",
-    "postinstall": "npm run build"
+    "postinstall": "yarn run build"
   },
   "dependencies": {
     "express": "4.16.3",
