@@ -48,6 +48,7 @@ All libraries from **blueskyfish-express-*** and depended applications should us
 
 | Version    | Date       | Description
 |------------|:----------:|--------------------------------------------
+| `0.3.0`    | 2018-05-02 | adjust tsc options.
 | `0.2.1`    | 2018-05-01 | switch to yarn. post install with global typescript compiler.
 | `0.1.0`    | 2018-04-20 | add renderView method for Http and improve the js doc.<br>rework the HttpStatus enum to a type of `okay` and `error`.
 | `0.0.12`   | 2018-04-13 | adjust the version of the depended node modules.
