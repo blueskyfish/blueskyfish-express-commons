@@ -103,6 +103,14 @@ declare namespace e {
 		 * @return {string} the hash from the sha256 function
 		 */
 		static sha(secrets: string, password: string): string;
+
+		/**
+		 * Replace all bracket kinds and hash signs with the given sign
+		 * @param {string} s
+		 * @param {string} [sign] replace with this signe (default `-`)
+		 * @return {string}
+		 */
+		static adjustAndLower(s: string, sign: string): string;
 	}
 
 	/**

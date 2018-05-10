@@ -6,6 +6,7 @@
  */
 
 import * as crypto from 'crypto';
+import replace = require('lodash/fp/replace');
 
 const NL = '\n';
 
@@ -84,6 +85,23 @@ export class Util {
 	static sha(secrets: string, password: string): string {
 		const text: string = `${secrets}:${password}`;
 		return crypto.createHash(ALGORITHM).update(text).digest(OUTPUT);
+	}
+
+	/**
+	 * Replace all bracket kinds and hash signs with the given sign
+	 * @param {string} s
+	 * @param {string} [sign] replace with this signe (default `-`)
+	 * @return {string}
+	 */
+	static adjustAndLower(s: string, sign: string = '-'): string {
+		if (!s) {
+			return '';
+		}
+		return s.toLowerCase()
+			.replace(/[ \t\r\n_(){}#\[\]<>!?&%$]/g, '-')
+			.replace(/--/g, '-')
+			.replace(/-\./g, '.')
+			.replace(/-/g, sign);
 	}
 
 }

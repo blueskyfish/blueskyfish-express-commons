@@ -13,6 +13,7 @@ Helpful classes and functions for create a express micro service.
 ## Requirements
 
 * [NodeJS][nodejs] Version 8.x or higher.
+* [Yarn][yarn].
 * [Typescript][typescript] Version 2.6.2 or higher.
 * [Express][express] Version 4.16 or higher
 
@@ -48,6 +49,7 @@ All libraries from **blueskyfish-express-*** and depended applications should us
 
 | Version    | Date       | Description
 |------------|:----------:|--------------------------------------------
+| `0.3.2`    | 2018-05-10 | add function for adjust and lower string.
 | `0.3.0`    | 2018-05-02 | adjust tsc options.
 | `0.2.1`    | 2018-05-01 | switch to yarn. post install with global typescript compiler.
 | `0.1.0`    | 2018-04-20 | add renderView method for Http and improve the js doc.<br>rework the HttpStatus enum to a type of `okay` and `error`.
