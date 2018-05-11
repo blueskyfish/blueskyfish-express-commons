@@ -20,6 +20,7 @@ export { compareLevel } from './log/log.compare'
 export { JsonReplacer, Util } from './util/util';
 export {
 	HTTP_OK,
+	HTTP_NOT_MODIFIED,
 	HTTP_BAD_REQUEST,
 	HTTP_FORBIDDEN,
 	HTTP_NOT_FOUND,

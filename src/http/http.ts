@@ -5,6 +5,7 @@
  * Copyright 2018 BlueSkyFish
  */
 
+import * as _ from 'lodash';
 import { Request, Response } from 'express';
 
 import { IBaseError } from '../error/base.models';
@@ -119,5 +120,34 @@ export class Http {
 	 */
 	static getBody<T>(req: Request): T {
 		return req.body as T;
+	}
+
+	/**
+	 * Returns the value of the request header.
+	 *
+	 * @param {Request} req the request
+	 * @param {string} name the name of the header (e.g. Content-Type)
+	 * @return {string} the value or null if the value is not exist.
+	 */
+	static getHeader(req: Request, name: string): string {
+		if (!req || !name) {
+			return null;
+		}
+		const value: string = req.get(name);
+		if (value) {
+			return value;
+		}
+		return req.get(_.lowerCase(name));
+	}
+
+	/**
+	 * Set the response header with the given header and value
+	 *
+	 * @param {Response} res the response
+	 * @param {string} name the name of the header
+	 * @param {string} value the value of the header
+	 */
+	static setHeader(res: Response, name: string, value: string): void {
+		res.set(name, value);
 	}
 }

@@ -110,7 +110,7 @@ declare namespace e {
 		 * @param {string} [sign] replace with this signe (default `-`)
 		 * @return {string}
 		 */
-		static adjustAndLower(s: string, sign: string): string;
+		static adjustAndLower(s: string, sign?: string): string;
 	}
 
 	/**
@@ -119,6 +119,7 @@ declare namespace e {
 	type HttpStatus = 'okay' | 'error';
 
 	const HTTP_OK: number;
+	const HTTP_NOT_MODIFIED: number;
 	const HTTP_BAD_REQUEST: number;
 	const HTTP_UNAUTHORIZED: number;
 	const HTTP_FORBIDDEN: number;
@@ -165,7 +166,7 @@ declare namespace e {
 		 * @param {string} mimeType the mime type of the data
 		 * @param {string | Buffer} data the data
 		 */
-		static sendMedia(res: Response, mimeType: string, data: string|Buffer): void
+		static sendMedia(res: Response, mimeType: string, data: string | Buffer): void
 
 		/**
 		 * Send an error message to the client. If the error status is greater zero then it use the status, otherwise
@@ -192,7 +193,7 @@ declare namespace e {
 		 * @param {string} defValue
 		 * @returns {string}
 		 */
-		static fromPathParam(req: Request, param: string|number, defValue?: string): string;
+		static fromPathParam(req: Request, param: string | number, defValue?: string): string;
 
 		/**
 		 * Returns the query parameter value of the default value.
@@ -209,6 +210,24 @@ declare namespace e {
 		 * @returns {T}
 		 */
 		static getBody<T>(req: Request): T;
+
+		/**
+		 * Returns the value of the request header.
+		 *
+		 * @param {Request} req the request
+		 * @param {string} name the name of the header (e.g. Content-Type)
+		 * @return {string} the value or null if the value is not exist.
+		 */
+		static getHeader(req: Request, name: string): string;
+
+		/**
+		 * Set the response header with the given header and value
+		 *
+		 * @param {Response} res the response
+		 * @param {string} name the name of the header
+		 * @param {string} value the value of the header
+		 */
+		static setHeader(res: Response, name: string, value: string): void;
 	}
 
 	const FILE_TAG: string;

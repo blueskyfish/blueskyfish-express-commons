@@ -27,6 +27,11 @@ export const HTTP_STATUS_ERROR: HttpStatus  = 'error';
 export const HTTP_OK: number = 200;
 
 /**
+ * The http status code for "304" Not Modified
+ */
+export const HTTP_NOT_MODIFIED: number = 304;
+
+/**
  * The http status code "Bad Request"
  */
 export const HTTP_BAD_REQUEST: number = 400;
